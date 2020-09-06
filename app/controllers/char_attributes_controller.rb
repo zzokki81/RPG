@@ -69,6 +69,6 @@ class CharAttributesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def char_attribute_params
-      params.require(:char_attribute).permit(:name, :value)
+      params.require(:char_attribute).permit(:name, :value, :avatar_icon)
     end
 end

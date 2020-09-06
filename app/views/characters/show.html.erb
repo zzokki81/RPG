@@ -4,6 +4,8 @@
   <strong>Name:</strong>
   <%= @character.name %>
 </p>
+<%= image_tag @character.image, style: "width: 200px; height: auto" %>
+<br>
 
 <%= link_to 'Edit', edit_character_path(@character) %> |
 <%= link_to 'Back', characters_path %>
