@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @char_attribute.name %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @char_attribute.value %>
+</p>
+
+<%= link_to 'Edit', edit_char_attribute_path(@char_attribute) %> |
+<%= link_to 'Back', char_attributes_path %>
