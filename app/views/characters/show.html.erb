@@ -1,11 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @character.name %>
+<p id="notice">
+    <%= notice %>
 </p>
-<%= image_tag @character.image, style: "width: 200px; height: auto" %>
-<br>
-
+<p>
+    <strong>Name:</strong>
+    <%= @character.name %>
+    <% if @character.image.attached? %>
+    <%= image_tag @character.image, style: "width: 200px; height: auto" %>
+    <% end %>
+</p>
+<div id="char_attributes">
+    <% if @character.char_attributes.any? %>
+    <hr>
+    <h2>Attributes by
+        <%= @character.name %>
+    </h2>
+    <%= render @character.char_attributes %>
+    <% end %>
+    <hr>
+    <br>
+    <h2>Add attribute</h2>
+    <%= render 'char_attributes/form', char_attribute: @character.char_attributes.build, remote: true %>
+</div>
 <%= link_to 'Edit', edit_character_path(@character) %> |
 <%= link_to 'Back', characters_path %>

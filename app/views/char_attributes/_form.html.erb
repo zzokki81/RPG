@@ -1,32 +1,30 @@
-<%= form_with(model: char_attribute, local: true) do |form| %>
-  <% if char_attribute.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(char_attribute.errors.count, "error") %> prohibited this char_attribute from being saved:</h2>
-
-      <ul>
+<%= form_with(model: [@character, char_attribute]) do |form| %>
+<% if char_attribute.errors.any? %>
+<div id="error_explanation">
+    <h2>
+        <%= pluralize(char_attribute.errors.count, "error") %> prohibited this char_attribute from being saved:</h2>
+    <ul>
         <% char_attribute.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <li>
+            <%= message %>
+        </li>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+    </ul>
+</div>
+<% end %>
+<div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
+</div>
+<div class="field">
     <%= form.label :value %>
     <%= form.number_field :value %>
-  </div>
-
-  <div class="field">
+</div>
+<div class="field">
     <%= form.label :avatar_icon %>
     <%= form.file_field :avatar_icon %>
 </div>
-
-  <div class="actions">
+<div class="actions">
     <%= form.submit %>
-  </div>
+</div>
 <% end %>

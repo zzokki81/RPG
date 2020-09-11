@@ -15,6 +15,7 @@ class CharactersController < ApplicationController
   # GET /characters/new
   def new
     @character = Character.new
+    @character.char_attributes.build
   end
 
   # GET /characters/1/edit
@@ -69,6 +70,6 @@ class CharactersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def character_params
-      params.require(:character).permit(:name, :image)
+      params.require(:character).permit(:name, :image, char_attributes_attributes: [:name, :value, :avatar_icon, :_destroy])
     end
 end

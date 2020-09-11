@@ -37,10 +37,12 @@ ActiveRecord::Schema.define(version: 2020_09_06_173640) do
   end
 
   create_table "char_attributes", force: :cascade do |t|
-    t.string "name"
-    t.integer "value"
+    t.bigint "character_id", null: false
+    t.string "name", null: false
+    t.integer "value", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["character_id"], name: "index_char_attributes_on_character_id"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -50,4 +52,5 @@ ActiveRecord::Schema.define(version: 2020_09_06_173640) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "char_attributes", "characters"
 end

@@ -1,0 +1,12 @@
+<h2>Attribute: </h2>
+<%= char_attribute.name %>
+      <% if char_attribute.avatar_icon.attached? %>
+      <%= image_tag char_attribute.avatar_icon, width: "50px" %>
+      <% end %></p>
+    <p>With Value of: <%= char_attribute.value %></p>
+    <br>
+    <br>
+<p><u>Edit this attribute</u></p>
+<%= render 'char_attributes/form', char_attribute: char_attribute, remote: true %>
+<br>
+<%= link_to "Delete attribute", [@character, char_attribute], method: :delete, :class => "btn btn-danger" %>

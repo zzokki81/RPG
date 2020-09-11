@@ -1,5 +1,7 @@
 class CharAttributesController < ApplicationController
-  before_action :set_char_attribute, only: [:show, :edit, :update, :destroy]
+  before_action(:get_character)
+
+  before_action(:set_char_attribute, :only => ([:show, :edit, :update, :destroy]))
 
   # GET /char_attributes
   # GET /char_attributes.json
@@ -10,6 +12,7 @@ class CharAttributesController < ApplicationController
   # GET /char_attributes/1
   # GET /char_attributes/1.json
   def show
+    # do nothing
   end
 
   # GET /char_attributes/new
@@ -19,20 +22,26 @@ class CharAttributesController < ApplicationController
 
   # GET /char_attributes/1/edit
   def edit
+    # do nothing
   end
 
   # POST /char_attributes
   # POST /char_attributes.json
   def create
-    @char_attribute = CharAttribute.new(char_attribute_params)
-
+    @char_attribute = @character.char_attributes.build(char_attribute_params)
     respond_to do |format|
       if @char_attribute.save
-        format.html { redirect_to @char_attribute, notice: 'Char attribute was successfully created.' }
-        format.json { render :show, status: :created, location: @char_attribute }
+        format.html do
+          redirect_to(@char_attribute, :notice => "Char attribute was successfully created.")
+        end
+        format.json do
+          render(:show, :status => :created, :location => (@char_attribute))
+        end
       else
-        format.html { render :new }
-        format.json { render json: @char_attribute.errors, status: :unprocessable_entity }
+        format.html { render(:new) }
+        format.json do
+          render(:json => @char_attribute.errors, :status => :unprocessable_entity)
+        end
       end
     end
   end
@@ -42,11 +51,15 @@ class CharAttributesController < ApplicationController
   def update
     respond_to do |format|
       if @char_attribute.update(char_attribute_params)
-        format.html { redirect_to @char_attribute, notice: 'Char attribute was successfully updated.' }
-        format.json { render :show, status: :ok, location: @char_attribute }
+        format.html do
+          redirect_to(@char_attribute, :notice => "Char attribute was successfully updated.")
+        end
+        format.json { render(:show, :status => :ok, :location => (@char_attribute)) }
       else
-        format.html { render :edit }
-        format.json { render json: @char_attribute.errors, status: :unprocessable_entity }
+        format.html { render(:edit) }
+        format.json do
+          render(:json => @char_attribute.errors, :status => :unprocessable_entity)
+        end
       end
     end
   end
@@ -56,19 +69,26 @@ class CharAttributesController < ApplicationController
   def destroy
     @char_attribute.destroy
     respond_to do |format|
-      format.html { redirect_to char_attributes_url, notice: 'Char attribute was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html do
+        redirect_to(char_attributes_url, :notice => "Char attribute was successfully destroyed.")
+      end
+      format.json { head(:no_content) }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_char_attribute
-      @char_attribute = CharAttribute.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def char_attribute_params
-      params.require(:char_attribute).permit(:name, :value, :avatar_icon)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_char_attribute
+    @char_attribute = CharAttribute.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def char_attribute_params
+    params.require(:char_attribute).permit(:name, :value, :avatar_icon, :character_id)
+  end
+
+  def get_character
+    @character = Character.find(params[:character_id])
+  end
 end
