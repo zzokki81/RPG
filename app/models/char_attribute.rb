@@ -3,4 +3,5 @@ class CharAttribute < ApplicationRecord
   belongs_to :character
   validates_presence_of :character
   validates :name, presence: true
-end
+  validates :value, presence: true
+ end
