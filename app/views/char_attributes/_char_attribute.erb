@@ -6,7 +6,8 @@
     <p>With Value of: <%= char_attribute.value %></p>
     <br>
     <br>
-<p><u>Edit this attribute</u></p>
+    <% if user_signed_in?  && @character.user_id == current_user.id %>
 <%= render 'char_attributes/form', char_attribute: char_attribute, remote: true %>
 <br>
 <%= link_to "Delete attribute", [@character, char_attribute], method: :delete, :class => "btn btn-danger" %>
+<% end %>

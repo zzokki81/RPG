@@ -1,3 +1,4 @@
+<div class="text-center">
 <h1>Edit Your Character</h1>
 <%= render 'form', character: @character, remote: true %>
 <div id="character_attributes">
@@ -15,4 +16,5 @@
 <div class="navigation-links">
     <%= link_to 'Show', @character_type, :class => "btn btn-primary" %>
     <%= link_to 'Back', character_path, :class => "btn btn-success" %>
+</div>
 </div>

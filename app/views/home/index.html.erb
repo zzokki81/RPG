@@ -1,43 +1,21 @@
-<% if !current_user %>
 <div class="text-center">
     <h1>Welcome to RPG editor</h1>
+    <% if !current_user %>
     <p class="card-text">Login or Signup to make new character</p>
     <p>
-        <%= link_to "Sign Up",new_user_registration_path, class: "btn btn-danger btn-lg" %>
-        <%= link_to "Login",new_user_session_path, class: "btn btn-danger btn-lg" %>
+        <%= link_to "All Characters", characters_path,  :class => "btn btn-primary"%>
+        <%= link_to "Sign Up",new_user_registration_path, :class => "btn btn-primary" %>
+        <%= link_to "Login",new_user_session_path, :class => "btn btn-primary" %>
     </p>
+    <% end %>
+</div>
+<div class="text-center">
+    <% if current_user %>
+    <h2>Please choose your option:</h2>
+    <br>
+    <%= link_to "Show All Characters", characters_path, :class => "btn btn-primary" %>
+    <%= link_to "Show My Characters", user_path(current_user), :class => "btn btn-primary" %>
+    <%= link_to "Create New character", new_character_path, :class => "btn btn-primary" %>
+    <%= link_to "Logout", destroy_user_session_path, :class => "btn btn-primary" %>
 </div>
 <% end %>
-<div class="container">
-    <div class="card border-0 shadow my-5">
-        <div class="card-body p-5">
-            <div class="text-center">
-                <h1 class="font-weight-light">All characters: </h1>
-            </div>
-            <br>
-            <div class="row justify-content-between">
-                <% @characters.each do |character| %>
-                <div class="col-md-3  ">
-                    <div class="card" style="width: 250px;">
-                        <% if character.image.attached? %>
-                        <%= image_tag(character.image, class: "img-thumbnail w-100", style:"height: 250px;")%>
-                        <% else %>
-                        <%= image_tag('/assets/noimg.jpeg', class:"img-thumbnail w-100", style:"height: 250px;") %>
-                        <% end %>
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <%= character.name %>
-                            </h5>
-                            <p class="card-text">
-                                <%= truncate(character.description, length: 150) %>
-                            </p>
-                            <%= link_to 'View', character, class: "btn btn-primary" %>
-                        </div>
-                    </div>
-                </div>
-                <% end %>
-            </div>
-            <div style="height: 500px"></div>
-        </div>
-    </div>
-</div>
