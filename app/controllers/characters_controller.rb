@@ -6,7 +6,7 @@ class CharactersController < ApplicationController
   # GET /characters
   # GET /characters.json
   def index
-    @characters = Character.all
+    @characters = Character.page params[:page]
   end
 
   # GET /characters/1
