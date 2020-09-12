@@ -1,7 +1,9 @@
 class CharAttributesController < ApplicationController
   before_action(:get_character)
-
   before_action(:set_char_attribute, :only => ([:show, :edit, :update, :destroy]))
+  before_action(:require_same_user, :only => ([:edit, :update, :destroy]))
+
+
 
   # GET /char_attributes
   # GET /char_attributes.json
@@ -76,6 +78,8 @@ class CharAttributesController < ApplicationController
     end
   end
 
+
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -90,5 +94,9 @@ class CharAttributesController < ApplicationController
 
   def get_character
     @character = Character.find(params[:character_id])
+  end
+
+  def require_same_user
+    redirect_to(characters_path) if (current_user != @character.user)
   end
 end

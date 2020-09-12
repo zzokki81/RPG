@@ -20,6 +20,11 @@
     <br>
     <h2>Add attribute</h2>
     <%= render 'char_attributes/form', char_attribute: @character.char_attributes.build, remote: true %>
+    <td>
+        <%= link_to "Delete Character", character_path(@character), method: :delete,
+                                            data: { confirm: "Are you sure you want to delete?" },
+                                            class: "btn btn-xs btn-danger" %>
+    </td>
 </div>
 <%= link_to 'Edit', edit_character_path(@character) %> |
 <%= link_to 'Back', characters_path %>

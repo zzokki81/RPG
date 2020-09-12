@@ -1,0 +1,17 @@
+
+<% @user_characters.each do |character| %>
+  <div>
+    <div>
+      <% if character.image.attached? %>
+        <%= image_tag(character.image,  style: "width: 200px; height: auto;") %>
+      <% else %>
+        <%= image_tag('/assets/noimg.jpeg', style: "width: 200px; height: auto;") %>
+      <% end %>
+    </div>
+    <div >
+      <div>
+         <div class="col-md-6">
+          <h4><%= link_to character.name, character %></h4>
+        </div>
+  </div>
+<% end %>
