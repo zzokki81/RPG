@@ -3,8 +3,6 @@ class CharAttributesController < ApplicationController
   before_action(:set_char_attribute, :only => ([:show, :edit, :update, :destroy]))
   before_action(:require_same_user, :only => ([:edit, :update, :destroy]))
 
-
-
   # GET /char_attributes
   # GET /char_attributes.json
   def index
@@ -33,6 +31,7 @@ class CharAttributesController < ApplicationController
     @char_attribute = @character.char_attributes.build(char_attribute_params)
     respond_to do |format|
       if @char_attribute.save
+        format.js
         format.html do
           redirect_to(@char_attribute, :notice => "Char attribute was successfully created.")
         end
@@ -40,6 +39,7 @@ class CharAttributesController < ApplicationController
           render(:show, :status => :created, :location => (@char_attribute))
         end
       else
+        format.js
         format.html { render(:new) }
         format.json do
           render(:json => @char_attribute.errors, :status => :unprocessable_entity)
@@ -50,9 +50,11 @@ class CharAttributesController < ApplicationController
 
   # PATCH/PUT /char_attributes/1
   # PATCH/PUT /char_attributes/1.json
-  def update
+
+ def update
     respond_to do |format|
       if @char_attribute.update(char_attribute_params)
+        format.js
         format.html do
           redirect_to(@char_attribute, :notice => "Char attribute was successfully updated.")
         end
@@ -71,6 +73,7 @@ class CharAttributesController < ApplicationController
   def destroy
     @char_attribute.destroy
     respond_to do |format|
+      format.js
       format.html do
         redirect_to(char_attributes_url, :notice => "Char attribute was successfully destroyed.")
       end

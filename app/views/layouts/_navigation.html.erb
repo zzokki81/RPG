@@ -6,10 +6,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
+              <li class="nav-item">
                     <%= link_to "Home", root_path, class: "nav-link" %>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <%= link_to "All Characters", characters_path, class: "nav-link" %>
                 </li>
                 <% if !user_signed_in? %>
@@ -23,9 +23,6 @@
                 <% end %>
 
                   <% if user_signed_in? %>
-                    <li class="nav-item">
-                        <%= link_to "My Characters", user_path(current_user), class: "nav-link" %>
-                    </li>
                     <li class="nav-item">
                         <%= link_to "New", new_character_path, class: "nav-link" %>
                     </li>

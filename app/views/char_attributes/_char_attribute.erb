@@ -1,13 +1,18 @@
-<h2>Attribute: </h2>
-<%= char_attribute.name %>
-      <% if char_attribute.avatar_icon.attached? %>
-      <%= image_tag char_attribute.avatar_icon, width: "50px" %>
-      <% end %></p>
-    <p>With Value of: <%= char_attribute.value %></p>
+<div id="attributes-<%= char_attribute.id %>">
+    <h2>Attribute: </h2>
+    <%= char_attribute.name %>
+    <% if char_attribute.avatar_icon.attached? %>
+    <%= image_tag char_attribute.avatar_icon, width: "50px" %>
+    <% end %>
+    </p>
+    <p>With Value of:
+        <%= char_attribute.value %>
+    </p>
     <br>
     <br>
     <% if user_signed_in?  && @character.user_id == current_user.id %>
-<%= render 'char_attributes/form', char_attribute: char_attribute, remote: true %>
-<br>
-<%= link_to "Delete attribute", [@character, char_attribute], method: :delete, :class => "btn btn-danger" %>
-<% end %>
+    <%= render 'char_attributes/form', char_attribute: char_attribute, remote: true %>
+    <br>
+    <%= link_to "Delete attribute", [@character, char_attribute], method: :delete, data: {confirm: "Are you sure you want to delete this attribute?"}, remote: true, :class => "btn btn-danger" %>
+    <% end %>
+</div>

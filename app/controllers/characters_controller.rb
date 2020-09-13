@@ -2,6 +2,7 @@ class CharactersController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_character, only: [:show, :edit, :update, :destroy]
   before_action :can_modify_character, only: [:edit, :update, :destroy]
+  respond_to :js, :html
 
   # GET /characters
   # GET /characters.json

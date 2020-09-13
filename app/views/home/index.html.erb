@@ -14,7 +14,6 @@
     <h2>Please choose your option:</h2>
     <br>
     <%= link_to "Show All Characters", characters_path, :class => "btn btn-primary" %>
-    <%= link_to "Show My Characters", user_path(current_user), :class => "btn btn-primary" %>
     <%= link_to "Create New character", new_character_path, :class => "btn btn-primary" %>
     <%= link_to "Logout", destroy_user_session_path, :class => "btn btn-primary" %>
 </div>

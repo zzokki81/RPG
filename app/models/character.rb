@@ -4,5 +4,5 @@ class Character < ApplicationRecord
   has_many :char_attributes, dependent: :destroy
   accepts_nested_attributes_for :char_attributes, allow_destroy: true
   validates :name, presence: true, uniqueness: true
-  paginates_per 5
+  paginates_per 4
 end

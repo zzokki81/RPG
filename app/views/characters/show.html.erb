@@ -18,8 +18,9 @@
         <%= @character.name %>
     </h2>
 
-    <%= render @character.char_attributes %>
+    <%= render @character.char_attributes, remote: true %>
     <% end %>
+    </div>
     <hr>
     <br>
     <% if user_signed_in?  && @character.user_id == current_user.id %>
@@ -31,7 +32,7 @@
                                             class: "btn btn-xs btn-danger" %>
     </td>
 
-</div>
+
 <br>
 <%= link_to 'Edit', edit_character_path(@character),class: "btn btn-sm btn-warning" %> |
  <% end %>
