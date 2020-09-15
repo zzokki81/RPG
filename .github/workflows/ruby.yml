@@ -36,6 +36,10 @@ jobs:
     - name: Install PostgreSQL 11 client
       run: sudo apt-get -yqq install libpq-dev
     - name: Install dependencies
+      env:
+        PGHOST: localhost
+        PGUSER: postgres
+        RAILS_ENV: test
       run: bundle install
     - name: Run tests
       run: bundle exec rake
