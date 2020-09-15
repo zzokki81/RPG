@@ -37,28 +37,32 @@ jobs:
       with:
         ruby-version: 2.7
 
-    - name: Install dependent libraries
+    - name: Install PostgreSQL 11 client
       run: sudo apt-get -yqq install libpq-dev
-    - name: Bundle install
+    - name: Install dependencies
+      env:
+        PGHOST: localhost
+        PGUSER: postgres
+        RAILS_ENV: test
+      run: bundle install
+    - name: Build App
+      env:
+        PGHOST: localhost
+        PGUSER: postgres
+        RAILS_ENV: test
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-     name: Setup Database
-      run: |
-        cp config/database.yml.github-actions config/database.yml
-        bundle exec rake db:create
-        bundle exec rake db:schema:load
+        bin/rails db:setup
+    - name: Tests
       env:
+        PGHOST: localhost
+        PGUSER: postgres
         RAILS_ENV: test
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
-
-    - name: Run RSpec
-      env:
-        RAILS_ENV: test
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
       run: bundle exec rspec
-
     - name: Run tests
+        env:
+        PGHOST: localhost
+        PGUSER: postgres
+        RAILS_ENV: test
       run: bundle exec rake
