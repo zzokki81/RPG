@@ -46,9 +46,15 @@ jobs:
         PGHOST: localhost
         PGUSER: postgres
         RAILS_ENV: test
-      run: 
+      run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
         bin/rails db:setup 
+    - name: Tests
+      env:
+        PGHOST: localhost
+        PGUSER: postgres
+        RAILS_ENV: test
+      run: bundle exec rspec
     - name: Run tests
       run: bundle exec rake
