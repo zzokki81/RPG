@@ -1,0 +1,21 @@
+<div class="text-center">
+<h1>Edit Your Character</h1>
+<%= render 'form', character: @character, remote: true %>
+<div id="char_attributes">
+    <br>
+    <% if @character.char_attributes.any? %>
+    <%= render @character.char_attributes, remote: true %>
+    <% end %>
+</div>
+<div id="new-attribute">
+    <h2>Add an Attribute</h2>
+    <%= render 'char_attributes/form', char_attribute: @character.char_attributes.build, remote: true %>
+</div>
+<br>
+<br>
+<div class="navigation-links">
+    <%= link_to 'Show', @character, :class => "btn btn-primary" %>
+    <%= link_to 'Back', character_path, :class => "btn btn-success" %>
+</div>
+</div>
+

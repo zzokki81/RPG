@@ -1,0 +1,19 @@
+<div id="attributes-<%= char_attribute.id %>">
+   <font size="4"> <%= char_attribute.name %> </font>
+   <div>
+    <% if char_attribute.avatar_icon.attached? %>
+    <%= image_tag char_attribute.avatar_icon, width: "50px" %>
+    <% end %>
+    <br>
+    <br>
+   </div>
+     <font size="4">Value:<%= char_attribute.value %> </font>
+    <br>
+    <br>
+    <% if user_signed_in?  && @character.user_id == current_user.id %>
+    <%= render 'char_attributes/form', char_attribute: char_attribute, remote: true %>
+    <br>
+    <%= link_to "Delete attribute", [@character, char_attribute], method: :delete, data: {confirm: "Are you sure?"}, remote: true, :class => "btn btn-danger" %>
+    <% end %>
+</div>
+

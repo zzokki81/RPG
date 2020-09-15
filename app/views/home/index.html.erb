@@ -1,0 +1,21 @@
+<div class="text-center">
+    <h1>Welcome to RPG editor</h1>
+    <% if !current_user %>
+    <p class="card-text">Login or Signup to make new character</p>
+    <p>
+        <%= link_to "All Characters", characters_path,  :class => "btn btn-primary"%>
+        <%= link_to "Sign Up",new_user_registration_path, :class => "btn btn-primary", id: "sign-up" %>
+        <%= link_to "Login",new_user_session_path, :class => "btn btn-primary", id: "login" %>
+    </p>
+    <% end %>
+</div>
+<div class="text-center">
+    <% if current_user %>
+    <h2>Please choose your option:</h2>
+    <br>
+    <%= link_to "Show All Characters", characters_path, :class => "btn btn-primary", id: "all-characters" %>
+
+    <%= link_to "Create New Character", new_character_path, :class => "btn btn-primary", id: "new-character" %>
+    <%= link_to "Logout", destroy_user_session_path,method: :delete, :class => "btn btn-primary", id: "logout" %>
+</div>
+<% end %>

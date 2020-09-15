@@ -1,0 +1,29 @@
+<%= form_for @character do |f| %>
+<br>
+<div>
+    <%= f.label :name %>
+    <br>
+    <%= f.text_field :name %>
+</div>
+<div>
+    <%= f.label :image %>
+    <br>
+    <%= f.file_field :image %>
+</div>
+<br>
+<br>
+<div id="char_attributes">
+    <h2>Add an attribute to character:</h2>
+    <%= f.fields_for :char_attributes do |char_attribute| %>
+    <%= render "char_attribute_fields", f: char_attribute %>
+    <% end %>
+    <div>
+        <%= link_to_add_association 'Add new attribute', f, :char_attributes, class: 'btn btn-primary' %>
+    </div>
+</div>
+<br>
+<div>
+    <%= f.submit :class => "btn btn-primary", id: "update-character"%>
+</div>
+<br>
+<% end %>

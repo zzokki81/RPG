@@ -1,0 +1,10 @@
+<div>
+    <font size="5">Name:</font>
+    <%= @char_attribute.name %>
+    <%= image_tag @char_attribute.avatar_icon, style: "width: 50px; height: auto" %>
+    <font size="5">Value:</font>
+    <%= @char_attribute.value %>
+</div>
+<br>
+<%= link_to 'Edit', edit_char_attribute_path(@char_attribute) %> |
+<%= link_to 'Back', char_attributes_path %>

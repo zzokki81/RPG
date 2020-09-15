@@ -1,0 +1,38 @@
+<div class="text-center">
+        <h4>Character name:</h4>
+        <div>
+            <font size="6">
+                <%= @character.name %>
+            </font>
+        </div>
+        <div>
+            <% if @character.image.attached? %>
+            <%= image_tag @character.image, style: "width: 200px; height: auto" %>
+            <% else %>
+            <%= image_tag("no-avatar.png", :alt => "no image", style: "width: 200px; height: auto") %>
+            <% end %>
+        </div>
+        <br>
+        <div id="char_attributes">
+            <% if @character.char_attributes.any? %>
+            <h4>Attributes by <%= @character.name %>:</h4>
+            <%= render @character.char_attributes, remote: true %>
+            <% end %>
+        </div>
+        <br>
+        <% if user_signed_in?  && @character.user_id == current_user.id %>
+        <h2>Add attribute</h2>
+        <%= render 'char_attributes/form', char_attribute: @character.char_attributes.build, remote: true %>
+        <br>
+        <br>
+        <td>
+            <%= link_to "Delete Character", character_path(@character), method: :delete,
+                                            data: { confirm: "Are you sure you want to delete?" },
+                                            class: "btn btn-xs btn-danger", id: "delete-character"%>
+        </td>
+        <br>
+         <br>
+        <%= link_to 'Edit', edit_character_path(@character),class: "btn btn-sm btn-warning" %> |
+        <% end %>
+        <%= link_to 'Back', characters_path, class: "btn btn-sm btn-success" %>
+</div>
