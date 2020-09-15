@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Char Attributes</h1>
-
 <table>
   <thead>
     <tr>
@@ -10,7 +8,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @char_attributes.each do |char_attribute| %>
       <tr>
@@ -23,9 +20,7 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <div id="attributes">
  <%= link_to 'New Char Attribute', new_char_attribute_path, remote: true %>
 </div>

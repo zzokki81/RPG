@@ -14,20 +14,22 @@
                 </td>
                 <% if user_signed_in?  && character.user_id == current_user.id %>
                 <td>
-                    <%= link_to 'Edit', edit_character_path(character),:class => "btn btn-primary btn-sm" %>
+                    <%= link_to 'Edit', edit_character_path(character),:class => "btn btn-primary btn-sm", id: "edit-character" %>
                 </td>
                 <td>
-                    <%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-primary btn-sm btn-danger"  %>
+                    <%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-primary btn-sm btn-danger", id: "delete-character"  %>
                 </td>
             </tr>
             <% end %>
-        <% end %>
+            <% end %>
         </tbody>
     </table>
     <br>
-    <% if user_signed_in? %>
-    <%= link_to 'New Character', new_character_path,:class => "btn btn-primary" %>
-    <% end %>
+    <div>
+        <% if user_signed_in? %>
+        <%= link_to 'New Character', new_character_path,:class => "btn btn-primary", id: "new-character" %>
+        <% end %>
+    </div>
     <br>
     <br>
     <div class="container pagination justify-content-center">

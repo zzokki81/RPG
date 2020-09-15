@@ -10,9 +10,6 @@
     <br>
     <%= f.file_field :image %>
 </div>
-<div>
-    <%= f.submit :class => "btn btn-primary", id: "update-character" %>
-</div>
 <br>
 <br>
 <div id="char_attributes">
@@ -23,6 +20,10 @@
     <div>
         <%= link_to_add_association 'Add new attribute', f, :char_attributes, class: 'btn btn-primary' %>
     </div>
+</div>
+<br>
+<div>
+    <%= f.submit :class => "btn btn-primary", id: "update-character"%>
 </div>
 <br>
 <% end %>
