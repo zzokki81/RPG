@@ -61,8 +61,4 @@ jobs:
         RAILS_ENV: test
       run: bundle exec rspec
     - name: Run tests
-        env:
-        PGHOST: localhost
-        PGUSER: postgres
-        RAILS_ENV: test
       run: bundle exec rake
