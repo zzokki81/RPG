@@ -39,6 +39,13 @@ jobs:
 
     - name: Install PostgreSQL 11 client
       run: sudo apt-get -yqq install libpq-dev
+    - name: Cache Gems
+      uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+            ${{ runner.os }}-gem-
     - name: Install dependencies
       env:
         PGHOST: localhost
