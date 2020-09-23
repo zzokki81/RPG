@@ -14,8 +14,14 @@
     <h2>Please choose your option:</h2>
     <br>
     <%= link_to "Show All Characters", characters_path, :class => "btn btn-primary", id: "all-characters" %>
-
     <%= link_to "Create New Character", new_character_path, :class => "btn btn-primary", id: "new-character" %>
-    <%= link_to "Logout", destroy_user_session_path,method: :delete, :class => "btn btn-primary", id: "logout" %>
+    <br>
+    <br>
+    <div>
+        <%= link_to "Logout", destroy_user_session_path,method: :delete, :class => "btn btn-sm btn-primary", id: "logout" %>
+        <%= link_to "Edit user", edit_user_registration_path, :class => "btn btn-sm btn-primary" %>
+        <%= link_to "Remove account", admin_destroy_user_path(current_user), method: :delete, data: { confirm: "
+Are you sure you want to delete your account?" },:class => "btn btn-sm btn-danger"  %>
+    </div>
 </div>
 <% end %>
