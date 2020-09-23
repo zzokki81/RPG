@@ -26,13 +26,13 @@
             <li class="nav-item">
                 <%= link_to "New", new_character_path, class: "nav-link" %>
             </li>
-            <% end %>
-            <% if user_signed_in? %>
+            <li class="nav-item">
+                <%= link_to "My Account", profile_path(current_user), class: "nav-link" %>
+            </li>
             <li class="nav-item">
                 <%= link_to "Logout", destroy_user_session_path, class: "nav-link" %>
             </li>
-            <span class="navbar-text">Logged in as
-                <%= current_user.username %></span>
+            <span class="navbar-text">Logged in as<%= current_user.username %></span>
             <% end %>
         </ul>
     </div>

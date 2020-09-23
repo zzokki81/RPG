@@ -6,6 +6,10 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    redirect_to(root_url, :notice => "User deleted.") if @user.destroy
+    redirect_to(root_url, notice: "User deleted.") if @user.destroy
+  end
+
+  def profile
+    @user = User.find(params[:id])
   end
 end

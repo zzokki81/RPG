@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show]
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
+  match "users/:id/profile" => "users#profile", via: [:get], :as => :profile
 end

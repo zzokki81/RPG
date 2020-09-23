@@ -1,0 +1,13 @@
+<div class="text-center">
+    <% if current_user %>
+    <h1>My Account Page</h1>
+    <h4>Please choose your option:</h4>
+    <br>
+    <div>
+        <%= link_to "Logout", destroy_user_session_path,method: :delete, :class => "btn  btn-primary", id: "logout" %>
+        <%= link_to "Edit user", edit_user_registration_path, :class => "btn  btn-primary" %>
+        <%= link_to "Remove account", admin_destroy_user_path(current_user), method: :delete, data: { confirm: "
+Are you sure you want to delete your account?" },:class => "btn  btn-danger"  %>
+    </div>
+    <% end %>
+</div>
