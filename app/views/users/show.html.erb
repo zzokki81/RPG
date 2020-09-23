@@ -1,0 +1,15 @@
+<div class="text-center">
+  <h1>Your created characters</h1>
+  <br>
+  <br>
+  <table class="characters">
+    <% @user_characters.each do |character| %>
+    <tbody>
+        <td> <%= character.name %> </td>
+        <td><%= link_to 'Show', character, class: "btn btn-sm btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_character_path(character), class: "btn btn-sm btn-primary" %></td>
+        <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
+    <% end %>
+   </tbody>
+ </table>
+
