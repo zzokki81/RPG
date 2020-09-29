@@ -72,4 +72,4 @@ jobs:
     - name: Rubocop
       run: rubocop
     - name: Code smell detect with reek
-      run: reek -c .reek.yml
+      run: reek *
