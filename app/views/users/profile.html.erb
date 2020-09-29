@@ -1,6 +1,13 @@
 <div class="text-center">
     <% if current_user %>
+
     <h1>My Account Page</h1>
+    <br>
+    <br>
+    <h5>Username: <%= current_user.username %></h5>
+    <h5>Email: <%= current_user.email %></h5>
+    <br>
+    <br>
     <h4>Please choose your option:</h4>
     <br>
     <div>
