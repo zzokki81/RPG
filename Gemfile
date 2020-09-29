@@ -6,8 +6,8 @@ ruby '2.7.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3', '~> 1.4'
-#Postgres database
+# gem 'sqlite3', '~> 1.4'
+# Postgres database
 gem 'pg', '~> 0.18.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
@@ -23,13 +23,13 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'kaminari'
+gem "aws-sdk-s3", require: false
 gem 'bootstrap4-kaminari-views'
 gem "devise"
-gem "aws-sdk-s3", require: false
+gem 'kaminari'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-#Cocoon gem
+# Cocoon gem
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -41,9 +41,12 @@ group :development, :test do
 end
 
 group :development do
+  gem 'brakeman'
+  gem 'bullet'
+  gem 'reek', '~> 5.6'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -51,17 +54,17 @@ end
 
 group :development, :test do
   %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
-     gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
-   end
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
+  end
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

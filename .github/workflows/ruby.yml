@@ -67,3 +67,9 @@ jobs:
         PGUSER: postgres
         RAILS_ENV: test
       run: bundle exec rspec
+    - name: Check security with Brakeman
+      run: brakeman
+    - name: Rubocop
+      run: rubocop
+    - name: Code smell detect with reek
+      run: reek -c .reek.yml

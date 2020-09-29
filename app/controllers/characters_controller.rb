@@ -1,3 +1,4 @@
+# Character Controller
 class CharactersController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_character, only: [:show, :edit, :update, :destroy]
@@ -18,7 +19,7 @@ class CharactersController < ApplicationController
   def edit
   end
 
-  def create
+  def createthnx
     @character = Character.new(character_params)
     @character.user_id = current_user.id
 
@@ -33,21 +34,18 @@ class CharactersController < ApplicationController
     respond_to do |format|
       if @character.update(character_params)
         format.html do
-          redirect_to(@character, :notice => "Character was successfully updated.")
+          redirect_to(@character, notice: "Character was successfully updated.")
         end
-        format.json { render(:show, :status => :ok, :location => (@character)) }
+
       else
-        format.html { render(:edit) }
-        format.json do
-          render(:json => @character.errors, :status => :unprocessable_entity)
-        end
+        render 'edit'
       end
     end
   end
 
   def destroy
-   @character.destroy
-   redirect_to characters_path, notice: 'Post was successfully destroyed'
+    @character.destroy
+    redirect_to characters_path, notice: 'Post was successfully destroyed'
   end
 
   private
@@ -61,6 +59,6 @@ class CharactersController < ApplicationController
   end
 
   def character_params
-    params.require(:character).permit(:name, :image, :char_attributes_attributes => ([:name, :value, :avatar_icon, :_destroy]))
+    params.require(:character).permit(:name, :image, char_attributes_attributes: [:name, :value, :avatar_icon, :_destroy])
   end
 end

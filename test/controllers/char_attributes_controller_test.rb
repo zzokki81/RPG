@@ -1,5 +1,5 @@
 require 'test_helper'
-
+# Character Attributes Controller Test
 class CharAttributesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @char_attribute = char_attributes(:one)

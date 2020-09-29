@@ -1,0 +1,50 @@
+require:
+  - rubocop
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "db/schema.rb"
+    - "db/seeds.rb"
+    - "db/migrate/*"
+    - "vendor/**/*"
+    #     - 'spec/**/*'
+    - "spec/fixtures/**/*"
+    - "spec/rails_helper.rb"
+    - "spec/spec_helper.rb"
+    - "tmp/**/*"
+    - "config/puma.rb"
+    - "bin/*"
+    - "config/environments/*"
+    - "Guardfile"
+    - "config/spring.rb"
+    - "config/application.rb"
+    - 'node_modules/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 180
+  Exclude:
+    - "config/initializers/devise.rb"
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/BlockLength:
+  Max: 40
+  Exclude:
+    - "spec/**/*"
