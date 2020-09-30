@@ -19,7 +19,7 @@ class CharactersController < ApplicationController
   def edit
   end
 
-  def createthnx
+  def create
     @character = Character.new(character_params)
     @character.user_id = current_user.id
 
