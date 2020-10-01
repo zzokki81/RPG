@@ -7,12 +7,10 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @user = User.find(params[:id]) if User.exists?(params[:id])
+    @user = User.find(params[:id]) if User.exists?(params[:id].to_i)
   end
 
   def correct_user
-    unless current_user && params[:id].to_i == current_user.id
-      redirect_to(root_path, notice: "You don't have permission to see other users accounts!")
-    end
+    redirect_to(root_path, notice: "You don't have permission to see other users accounts!") unless current_user && params[:id].to_i == current_user.id
   end
 end

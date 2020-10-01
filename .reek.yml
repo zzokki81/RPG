@@ -11,6 +11,8 @@ directories:
       enabled: false
     InstanceVariableAssumption:
       enabled: false
+    DuplicateMethodCall:
+      enabled: false
   "app/helpers":
     IrresponsibleModule:
       enabled: false
