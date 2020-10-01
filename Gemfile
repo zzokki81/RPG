@@ -27,6 +27,7 @@ gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 gem "devise"
 gem "aws-sdk-s3", require: false
+gem 'simplecov', require: false
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 #Cocoon gem
