@@ -55,7 +55,7 @@ class CharactersController < ApplicationController
   end
 
   def can_modify_character
-    redirect_back(fallback_location: characters_path) unless @character.user_id == current_user.id
+    redirect_back(fallback_location: characters_path, notice: 'You are not authorized to edit this character!') unless @character.user_id == current_user.id
   end
 
   def character_params
