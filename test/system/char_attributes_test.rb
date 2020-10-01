@@ -1,5 +1,5 @@
 require "application_system_test_case"
-
+# Character Attributes Test
 class CharAttributesTest < ApplicationSystemTestCase
   setup do
     @char_attribute = char_attributes(:one)

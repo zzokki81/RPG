@@ -10,8 +10,8 @@ end
 
 When('I create new character') do
   @character = FactoryBot.create(:character,
-                                      user: @user,
-                                      name: 'Char')
+                                 user: @user,
+                                 name: 'Char')
 end
 
 Then('I have created a new character') do

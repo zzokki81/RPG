@@ -1,5 +1,5 @@
 require 'test_helper'
-
+# Character Controller Test
 class CharactersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @character = characters(:one)
