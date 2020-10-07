@@ -1,7 +1,7 @@
 # Char_Attributes Controller
 class CharAttributesController < ApplicationController
   load_and_authorize_resource :character
-  load_and_authorize_resource :char_attribute, :through => :character
+  load_and_authorize_resource :char_attribute, through: :character
   before_action(:set_character)
   before_action(:set_char_attribute, only: [:show, :edit, :update, :destroy])
 

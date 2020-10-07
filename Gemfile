@@ -25,10 +25,10 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem "aws-sdk-s3", require: false
 gem 'bootstrap4-kaminari-views'
+gem 'cancancan'
 gem "devise"
 gem 'kaminari'
 gem 'simplecov', require: false
-gem 'cancancan'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 # Cocoon gem

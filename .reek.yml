@@ -24,6 +24,8 @@ directories:
     InstanceVariableAssumption:
       enabled: false
   "app/models":
+    DuplicateMethodCall:
+      enabled: false
     InstanceVariableAssumption:
       enabled: false
     IrresponsibleModule:
