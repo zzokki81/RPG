@@ -28,6 +28,7 @@ gem 'bootstrap4-kaminari-views'
 gem "devise"
 gem 'kaminari'
 gem 'simplecov', require: false
+gem 'cancancan'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 # Cocoon gem

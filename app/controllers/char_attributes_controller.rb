@@ -1,8 +1,9 @@
 # Char_Attributes Controller
 class CharAttributesController < ApplicationController
+  load_and_authorize_resource :character
+  load_and_authorize_resource :char_attribute, :through => :character
   before_action(:set_character)
   before_action(:set_char_attribute, only: [:show, :edit, :update, :destroy])
-  before_action(:require_same_user, only: [:edit, :update, :destroy])
 
   def index
     @char_attributes = CharAttribute.all
@@ -65,9 +66,5 @@ class CharAttributesController < ApplicationController
 
   def set_character
     @character = Character.find(params[:character_id])
-  end
-
-  def require_same_user
-    redirect_to(characters_path) if current_user != @character.user
   end
 end
