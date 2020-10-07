@@ -3,21 +3,7 @@ class CharAttributesController < ApplicationController
   load_and_authorize_resource :character
   load_and_authorize_resource :char_attribute, through: :character
   before_action(:set_character)
-  before_action(:set_char_attribute, only: [:show, :edit, :update, :destroy])
-
-  def index
-    @char_attributes = CharAttribute.all
-  end
-
-  def show
-  end
-
-  def new
-    @char_attribute = CharAttribute.new
-  end
-
-  def edit
-  end
+  before_action(:set_char_attribute, only: [:update, :destroy])
 
   def create
     @char_attribute = @character.char_attributes.build(char_attribute_params)

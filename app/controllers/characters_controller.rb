@@ -1,6 +1,7 @@
 # Character Controller
 class CharactersController < ApplicationController
   load_and_authorize_resource
+  before_action :authenticate_user!, except: [:show, :index]
   before_action :set_character, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -11,8 +12,6 @@ class CharactersController < ApplicationController
   end
 
   def new
-    @character = Character.new
-    @character.char_attributes.build
   end
 
   def edit

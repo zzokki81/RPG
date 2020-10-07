@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CharactersController, type: :controller do
-  let(:user) { instance_double(User) }
+  let(:user) { FactoryBot.create(:user) }
 
   before { log_in(user) }
 
