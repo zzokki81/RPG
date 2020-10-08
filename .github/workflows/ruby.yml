@@ -39,25 +39,25 @@ jobs:
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
             ${{ runner.os }}-gem-
+    - name: Install Bundler
+        run: |
+          gem install bundler
     - name: Build App
-      env:
-        PGHOST: localhost
-        PGUSER: postgres
-        RAILS_ENV: test
       run: |
         bundle config path vendor/bundle
-        gem install bundler
         bundle install --jobs 4 --retry 3
-        bin/rails db:setup
     - name: Rspec tests
       env:
         PGHOST: localhost
         PGUSER: postgres
         RAILS_ENV: test
-      run: bundle exec rspec
+      run: |
+        bin/rails db:setup
+        bundle exec rspec
     - name: Check security with Brakeman
       run: brakeman
     - name: Rubocop
       run: rubocop
     - name: Code smell detect with reek
       run: reek *
+ 
