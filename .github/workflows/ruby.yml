@@ -60,4 +60,3 @@ jobs:
       run: rubocop
     - name: Code smell detect with reek
       run: reek *
- 
