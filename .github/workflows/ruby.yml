@@ -45,8 +45,8 @@ jobs:
         PGUSER: postgres
         RAILS_ENV: test
       run: |
-        gem install bundler
         bundle config path vendor/bundle
+        gem install bundler
         bundle install --jobs 4 --retry 3
         bin/rails db:setup
     - name: Rspec tests
