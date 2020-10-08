@@ -40,8 +40,7 @@ jobs:
         restore-keys: |
             ${{ runner.os }}-gem-
     - name: Install Bundler
-        run: |
-          gem install bundler
+      run: gem install bundler
     - name: Build App
       run: |
         bundle config path vendor/bundle
