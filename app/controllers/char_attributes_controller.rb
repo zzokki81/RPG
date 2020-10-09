@@ -1,22 +1,8 @@
 # Char_Attributes Controller
 class CharAttributesController < ApplicationController
-  before_action(:set_character)
-  before_action(:set_char_attribute, only: [:show, :edit, :update, :destroy])
-  before_action(:require_same_user, only: [:edit, :update, :destroy])
-
-  def index
-    @char_attributes = CharAttribute.all
-  end
-
-  def show
-  end
-
-  def new
-    @char_attribute = CharAttribute.new
-  end
-
-  def edit
-  end
+  load_and_authorize_resource :character
+  load_and_authorize_resource :char_attribute, through: :character
+  before_action only: [:update, :destroy]
 
   def create
     @char_attribute = @character.char_attributes.build(char_attribute_params)
@@ -55,19 +41,7 @@ class CharAttributesController < ApplicationController
 
   private
 
-  def set_char_attribute
-    @char_attribute = CharAttribute.find(params[:id])
-  end
-
   def char_attribute_params
     params.require(:char_attribute).permit(:name, :value, :avatar_icon, :character_id)
-  end
-
-  def set_character
-    @character = Character.find(params[:character_id])
-  end
-
-  def require_same_user
-    redirect_to(characters_path) if current_user != @character.user
   end
 end

@@ -46,12 +46,11 @@ directories:
     UncommunicativeVariableName:
       enabled: false
 
-
-
 detectors:
   UtilityFunction:
     exclude:
       - "ApplicationController#skip_bullet"
       - "ApiHelpers#objects_ids_unsorted"
 exclude_paths:
- - node_modules/
+  - node_modules/
+  - app/models/ability.rb

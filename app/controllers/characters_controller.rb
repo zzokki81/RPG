@@ -1,8 +1,8 @@
 # Character Controller
 class CharactersController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_character, only: [:show, :edit, :update, :destroy]
-  before_action :can_modify_character, only: [:edit, :update, :destroy]
+  before_action only: [:show, :edit, :update, :destroy]
 
   def index
     @characters = Character.page params[:page]
@@ -12,8 +12,6 @@ class CharactersController < ApplicationController
   end
 
   def new
-    @character = Character.new
-    @character.char_attributes.build
   end
 
   def edit
@@ -49,14 +47,6 @@ class CharactersController < ApplicationController
   end
 
   private
-
-  def set_character
-    @character = Character.find(params[:id])
-  end
-
-  def can_modify_character
-    redirect_back(fallback_location: characters_path, notice: 'You are not authorized to edit this character!') unless @character.user_id == current_user.id
-  end
 
   def character_params
     params.require(:character).permit(:name, :image, char_attributes_attributes: [:name, :value, :avatar_icon, :_destroy])
