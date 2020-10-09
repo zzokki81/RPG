@@ -54,8 +54,8 @@ jobs:
         bin/rails db:setup
         bundle exec rspec
     - name: Check security with Brakeman
-      run: brakeman
+      run: bundle exec brakeman
     - name: Rubocop
-      run: rubocop
+      run: bundle exec rubocop
     - name: Code smell detect with reek
-      run: reek *
+      run: bundle exec reek *
