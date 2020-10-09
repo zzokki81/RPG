@@ -57,3 +57,5 @@ jobs:
       run: bundle exec brakeman
     - name: Rubocop
       run: bundle exec rubocop
+    - name: Code smell detect with reek
+      run: bundle exec reek
