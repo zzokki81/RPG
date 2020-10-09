@@ -2,8 +2,7 @@
 class CharAttributesController < ApplicationController
   load_and_authorize_resource :character
   load_and_authorize_resource :char_attribute, through: :character
-  before_action(:set_character)
-  before_action(:set_char_attribute, only: [:update, :destroy])
+  before_action only: [:update, :destroy]
 
   def create
     @char_attribute = @character.char_attributes.build(char_attribute_params)
@@ -42,15 +41,7 @@ class CharAttributesController < ApplicationController
 
   private
 
-  def set_char_attribute
-    @char_attribute = CharAttribute.find(params[:id])
-  end
-
   def char_attribute_params
     params.require(:char_attribute).permit(:name, :value, :avatar_icon, :character_id)
-  end
-
-  def set_character
-    @character = Character.find(params[:character_id])
   end
 end

@@ -2,10 +2,10 @@
 class CharactersController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_character, only: [:show, :edit, :update, :destroy]
+  before_action  only: [:show, :edit, :update, :destroy]
 
   def index
-    @characters = Character.page params[:page]
+     @characters = Character.page params[:page]
   end
 
   def show
@@ -47,10 +47,6 @@ class CharactersController < ApplicationController
   end
 
   private
-
-  def set_character
-    @character = Character.find(params[:id])
-  end
 
   def character_params
     params.require(:character).permit(:name, :image, char_attributes_attributes: [:name, :value, :avatar_icon, :_destroy])
